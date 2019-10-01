@@ -4,11 +4,11 @@ const Picture = require("../models/Picture");
 var multer  = require('multer');
 var upload = multer({ dest: `${__dirname}/../uploads/` });
 
-router.get("/upload-file", (req,res)=> {
+router.get("/upload", (req,res)=> {
     res.render("upload-picture")
 })
   
-router.post('/upload-file', upload.single('profile-picture'), function (req, res) {
+router.post('/upload', upload.single('profile-picture'), function (req, res) {
     Picture.create({title: req.body.title, path: req.file.filename})
         .then(()=> {
             res.send("uploaded!")
@@ -18,7 +18,7 @@ router.post('/upload-file', upload.single('profile-picture'), function (req, res
         })
 })
 
-router.get("/all-pictures", (req, res)=> {
+router.get("/all", (req, res)=> {
     Picture.find()
         .then((pictures)=> {
             res.render("pictures", {pictures})
