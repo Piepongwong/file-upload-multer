@@ -1,0 +1,16 @@
+<div class="grid-container">
+    {{#each pictures}}
+        <img class="grid-item" src="/{{path}}" alt="">
+    {{/each}}
+</div>
+
+<style>
+    .grid-container {
+        column-count: 4;
+        width: 100%;
+    }
+
+    .grid-item {
+        width: 100%;
+    }
+</style>
